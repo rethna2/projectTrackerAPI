@@ -22,7 +22,10 @@ router.post('/', [auth], async (req, res) => {
 });
 
 router.get('/', [auth], async (req, res) => {
-  const allProjects = await Project.find({ owner: req.user.emailId });
+  const allProjects = await Project.find({
+    $or: [{ owner: req.user.emailId }, { team: req.user.emailId }],
+    isDeleted: { $ne: true }
+  });
   res.send(allProjects);
 });
 
@@ -42,6 +45,13 @@ router.post('/:projectId', [auth], async (req, res) => {
     req.params.projectId
   );
   res.send(data);
+});
+
+router.delete('/:projectId', [auth], async (req, res) => {
+  const data = await Project.findByIdAndUpdate(req.params.projectId, {
+    $set: { isDeleted: true }
+  });
+  res.send({ msg: 'Deleted Project' });
 });
 
 module.exports = router;

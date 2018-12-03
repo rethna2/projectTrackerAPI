@@ -10,11 +10,24 @@ const taskSchema = new Schema({
   },
   name: String,
   description: String,
-  points: Number,
-  pointsDone: Number,
-  timeSpent: Number,
-  status: String,
-  assignedTo: String
+  points: {
+    type: Number,
+    default: 0
+  },
+  pointsDone: {
+    type: Number,
+    default: 0
+  },
+  timeSpent: {
+    type: Number,
+    default: 0
+  },
+  status: {
+    type: String,
+    default: 'backlog'
+  },
+  assignedTo: String,
+  isDeleted: Boolean
 });
 
 function validate(obj) {

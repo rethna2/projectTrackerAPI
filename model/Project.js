@@ -9,6 +9,10 @@ const projectSchema = new Schema(
     name: String,
     description: String,
     team: [String],
+    noOfTasks: {
+      type: Number,
+      default: 0
+    },
     totalPoints: {
       type: Number,
       default: 0
@@ -20,7 +24,8 @@ const projectSchema = new Schema(
     timeSpent: {
       type: Number,
       default: 0
-    }
+    },
+    isDeleted: Boolean
   },
   { timestamps: true }
 );
@@ -42,6 +47,7 @@ function validate(obj) {
       .required(),
     totalPoints: Joi.number(),
     pointsDone: Joi.number(),
+    noOfTasks: Joi.number(),
     timeSpent: Joi.number()
   };
   return Joi.validate(obj, schema);

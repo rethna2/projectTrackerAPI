@@ -10,9 +10,10 @@ const { Project } = require('../model/Project');
 const auth = require('../middleware/auth');
 const { logRecentActivity } = require('../utils');
 
-router.post('/:taskId', [auth], async (req, res) => {
-  const obj = _.pick(req.body, ['timeSpent', 'pointsDone', 'comments']);
+router.post('/:projectId/:taskId', [auth], async (req, res) => {
+  const obj = _.pick(req.body, ['timeSpent', 'pointsDone', 'comments', 'date']);
   obj.taskId = req.params.taskId;
+  obj.projectId = req.params.projectId;
   obj.peopleId = req.user.emailId;
   const { error } = validate(obj);
   if (error) return res.status(400).send(error.details[0].message);
@@ -25,19 +26,18 @@ router.post('/:taskId', [auth], async (req, res) => {
   }
   const time = new Time(obj);
   const data = await time.save();
-
   task.timeSpent += obj.timeSpent;
   task.pointsDone += obj.pointsDone;
   await task.save();
 
-  Project.findByIdAndUpdate(task.projectId, {
+  await Project.findByIdAndUpdate(task.projectId, {
     $inc: { timeSpent: obj.timeSpent, pointsDone: obj.pointsDone }
   });
   await logRecentActivity(
     'Logged Time',
     req,
     {
-      ..._.pick(data, ['_id', 'timeSpent', 'pointsDone', 'comments']),
+      ..._.pick(data, ['_id', 'timeSpent', 'pointsDone', 'comments', 'date']),
       name: task.name
     },
     task.projectId,
@@ -46,9 +46,10 @@ router.post('/:taskId', [auth], async (req, res) => {
   res.send(data);
 });
 
-router.post('/:taskId/:timeId', [auth], async (req, res) => {
-  const obj = _.pick(req.body, ['timeSpent', 'pointsDone', 'comments']);
+router.post('/:projectId/:taskId/:timeId', [auth], async (req, res) => {
+  const obj = _.pick(req.body, ['timeSpent', 'pointsDone', 'comments', 'date']);
   obj.taskId = req.params.taskId;
+  obj.projectId = req.params.projectId;
   obj.peopleId = req.user.emailId;
   const { error } = validate(obj);
   if (error) return res.status(400).send(error.details[0].message);
@@ -72,14 +73,14 @@ router.post('/:taskId/:timeId', [auth], async (req, res) => {
   task.timeSpent += timeSpentDelta;
   task.pointsDone += pointsDoneDelta;
   await task.save();
-  Project.findByIdAndUpdate(task.projectId, {
+  await Project.findByIdAndUpdate(task.projectId, {
     $inc: { timeSpent: timeSpentDelta, pointsDone: pointsDoneDelta }
   });
   await logRecentActivity(
     'Edited Time',
     req,
     {
-      ..._.pick(data, ['_id', 'timeSpent', 'pointsDone', 'comments']),
+      ..._.pick(data, ['_id', 'timeSpent', 'pointsDone', 'comments', 'date']),
       name: task.name
     },
     task.projectId,
@@ -99,24 +100,18 @@ router.get('/people/:peopleId', [auth], async (req, res) => {
 });
 
 router.get('/project/:projectId', [auth], async (req, res) => {
-  const tasks = await Task.find(
-    { projectId: req.params.projectId },
-    '_id name points status'
-  );
-  const list = [];
-
-  for (let i = 0; i < tasks.length; i++) {
-    const time = await Time.find(
-      { taskId: tasks[i]._id },
-      'timeSpent pointsDone'
-    );
-    list.push({
-      task: tasks[i],
-      time
+  const { from, to, user } = req.query;
+  let time;
+  if (from && to && user) {
+    time = await Time.find({
+      projectId: req.params.projectId,
+      peopleId: user,
+      date: { $gte: from, $lte: to }
     });
+  } else {
+    time = await Time.find({ projectId: req.params.projectId });
   }
-  res.send(list);
-  // res.send(list);
+  res.send(time);
 });
 
 module.exports = router;

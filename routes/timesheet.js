@@ -76,7 +76,7 @@ router.get('/me', [auth], async (req, res) => {
   res.send(data);
 });
 
-router.get('/action', [auth], async (req, res) => {
+router.get('/review', [auth], async (req, res) => {
   let idList = await Project.find({ owner: req.user.emailId }, '_id');
   idList = idList.map(item => String(item._id));
   const data = await TimeSheet.find({
@@ -86,7 +86,7 @@ router.get('/action', [auth], async (req, res) => {
   res.send(data);
 });
 
-router.post('/action/:timesheetId', [auth], async (req, res) => {
+router.post('/review/:timesheetId', [auth], async (req, res) => {
   const obj = _.pick(req.body, ['approverComments', 'status']);
   const data = await TimeSheet.findById(req.params.timesheetId);
   if (!data || data.status !== 'pending') {
