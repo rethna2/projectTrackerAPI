@@ -54,12 +54,6 @@ router.post('/:projectId/:taskId/:timeId', [auth], async (req, res) => {
   const { error } = validate(obj);
   if (error) return res.status(400).send(error.details[0].message);
   const task = await Task.findById(req.params.taskId);
-  if (false) {
-    // check if the task is assigned to particular person
-    if (!task || task.assignedTo !== req.user.emailId) {
-      return res.status(400).send('Sorry! This task is not assigned to you.');
-    }
-  }
 
   const data = await Time.findById(req.params.timeId);
   if (data.taskId.toString() !== req.params.taskId) {
@@ -87,6 +81,33 @@ router.post('/:projectId/:taskId/:timeId', [auth], async (req, res) => {
     req.params.taskId
   );
   res.send(data2);
+});
+
+router.delete('/:projectId/:taskId/:timeId', [auth], async (req, res) => {
+  const task = await Task.findById(req.params.taskId);
+  const time = await Time.findById(req.params.timeId);
+  if (time.taskId.toString() !== req.params.taskId) {
+    return res.status(400).send('Invalid task Id');
+  }
+  const data = await time.remove();
+  task.timeSpent -= time.timeSpent;
+  task.pointsDone -= time.pointsDone;
+
+  await task.save();
+  await Project.findByIdAndUpdate(task.projectId, {
+    $inc: { timeSpent: time.timeSpent * -1, pointsDone: time.pointsDone * -1 }
+  });
+  await logRecentActivity(
+    'Deleted Time',
+    req,
+    {
+      ..._.pick(time, ['_id', 'timeSpent', 'pointsDone', 'comments', 'date']),
+      name: task.name
+    },
+    task.projectId,
+    req.params.taskId
+  );
+  res.send(data);
 });
 
 router.get('/task/:taskId', [auth], async (req, res) => {
