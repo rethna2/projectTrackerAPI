@@ -5,9 +5,12 @@ const { Schema } = mongoose;
 
 const timeSchema = new Schema(
   {
-    taskId: {
-      type: mongoose.Schema.ObjectId,
-      required: true
+    task: {
+      id: {
+        type: mongoose.Schema.ObjectId,
+        required: true
+      },
+      name: { type: String, required: true }
     },
     projectId: {
       type: mongoose.Schema.ObjectId,
@@ -36,7 +39,10 @@ const timeSchema = new Schema(
 
 function validate(obj) {
   const schema = {
-    taskId: Joi.objectId().required(),
+    task: {
+      id: Joi.objectId().required(),
+      name: Joi.string()
+    },
     projectId: Joi.objectId().required(),
     timeSpent: Joi.number()
       .max(10)

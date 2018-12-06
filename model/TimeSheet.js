@@ -38,6 +38,8 @@ const timeSheetSchema = new Schema(
       type: String,
       default: 'pending'
     },
+    timeSpent: Number,
+    pointsDone: Number,
     comments: String,
     approverComments: String
   },

@@ -9,7 +9,8 @@ const router = express.Router();
 router.get('/:projectId', [auth], async (req, res) => {
   const data = await RecentActivity.find(
     { projectId: req.params.projectId },
-    '_id type user.name data.name'
+    '_id type user.name data.name createdAt',
+    { limit: 100, sort: { createdAt: -1 } }
   );
   res.send(data);
 });
@@ -17,7 +18,8 @@ router.get('/:projectId', [auth], async (req, res) => {
 router.get('/task/:taskId', [auth], async (req, res) => {
   const data = await RecentActivity.find(
     { taskId: req.params.taskId },
-    '_id type user.name data.name'
+    '_id type user.name data.name createdAt',
+    { sort: { createdAt: -1 } }
   );
   res.send(data);
 });

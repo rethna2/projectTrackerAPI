@@ -11,8 +11,15 @@ const auth = require('../middleware/auth');
 const { logRecentActivity } = require('../utils');
 
 router.post('/:projectId/:taskId', [auth], async (req, res) => {
-  const obj = _.pick(req.body, ['timeSpent', 'pointsDone', 'comments', 'date']);
-  obj.taskId = req.params.taskId;
+  const obj = _.pick(req.body, [
+    'timeSpent',
+    'pointsDone',
+    'comments',
+    'date',
+    'task'
+  ]);
+
+  // taskId is present both in url, and under task param
   obj.projectId = req.params.projectId;
   obj.peopleId = req.user.emailId;
   const { error } = validate(obj);
@@ -47,8 +54,13 @@ router.post('/:projectId/:taskId', [auth], async (req, res) => {
 });
 
 router.post('/:projectId/:taskId/:timeId', [auth], async (req, res) => {
-  const obj = _.pick(req.body, ['timeSpent', 'pointsDone', 'comments', 'date']);
-  obj.taskId = req.params.taskId;
+  const obj = _.pick(req.body, [
+    'timeSpent',
+    'pointsDone',
+    'comments',
+    'date',
+    'task'
+  ]);
   obj.projectId = req.params.projectId;
   obj.peopleId = req.user.emailId;
   const { error } = validate(obj);
@@ -111,7 +123,7 @@ router.delete('/:projectId/:taskId/:timeId', [auth], async (req, res) => {
 });
 
 router.get('/task/:taskId', [auth], async (req, res) => {
-  const data = await Time.find({ taskId: req.params.taskId });
+  const data = await Time.find({ 'task.id': req.params.taskId });
   res.send(data);
 });
 
