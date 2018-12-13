@@ -20,13 +20,13 @@ router.post('/register', async (req, res) => {
   const { error } = validateRegister(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  let user = await User.findById(req.body.email);
-  if (user) return res.status(400).send('User already registered.');
+  let user = await User.findById(req.body.emailId);
+  if (user)
+    return res.status(400).send({ msg: 'This email is already in use' });
   const userObj = _.pick(req.body, ['name', 'password']);
   userObj._id = req.body.emailId;
   const salt = await bcrypt.genSalt(10);
   userObj.password = await bcrypt.hash(userObj.password, salt);
-  const totalRecords = await User.find({});
   user = new User(userObj);
   await user.save();
 
@@ -39,10 +39,16 @@ router.post('/login', async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   const user = await User.findById(req.body.emailId);
-  if (!user) return res.status(400).send('Invalid email or password.');
+  if (!user)
+    return res
+      .status(400)
+      .send({ msg: 'Either email or password is incorrect!' });
 
   const validPassword = await bcrypt.compare(req.body.password, user.password);
-  if (!validPassword) return res.status(400).send('Invalid email or password.');
+  if (!validPassword)
+    return res
+      .status(400)
+      .send({ msg: 'Either email or password is incorrect!' });
 
   const token = user.generateAuthToken();
   res.header('x-auth', token).send(_.pick(user, ['emailId', 'name']));
