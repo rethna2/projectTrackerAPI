@@ -5,6 +5,7 @@ const task = require('../routes/task');
 const time = require('../routes/time');
 const timesheet = require('../routes/timesheet');
 const recentactivity = require('../routes/recentactivity');
+const pricing = require('../routes/pricing');
 const error = require('../middleware/error');
 
 module.exports = function routeSetup(app) {
@@ -15,5 +16,6 @@ module.exports = function routeSetup(app) {
   app.use('/api/time', time);
   app.use('/api/timesheet', timesheet);
   app.use('/api/recentactivity', recentactivity);
+  app.use('/api/pricing', pricing);
   app.use(error);
 };

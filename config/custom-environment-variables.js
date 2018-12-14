@@ -3,4 +3,5 @@ module.exports = {
   jwtprivatekey: 'projtrack_jwtprivatekey',
   communicationEmail: 'projtrack_communicationEmail',
   emailPass: 'projtrack_emailPass',
+  stripeKey: 'projtrack_stripeKey'
 };
