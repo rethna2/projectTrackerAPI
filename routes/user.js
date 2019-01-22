@@ -55,6 +55,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/forgotPassword', async (req, res) => {
+  //Todo: Check if valid token is available and send the same.
   const buffer = await crypto.randomBytes(20);
   const token = buffer.toString('hex');
   const user = await User.findById(req.body.emailId);

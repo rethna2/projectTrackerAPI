@@ -1,0 +1,978 @@
+{
+	"info": {
+		"name": "Project Tracker",
+		"_postman_id": "4e40661e-21cb-7210-849f-4104dc8630a1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"description": "",
+			"item": [
+				{
+					"name": "/api/user/register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"rethna great\",\n  \"emailId\": \"rethna2@gmail.com\",\n  \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/user/register",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/user/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"emailId\": \"rethna2@gmail.com\",\n  \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/user/login",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/user/forgotPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"emailId\": \"rethna2@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/user/forgotPassword",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"forgotPassword"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/user/resetPassword/:emailId/:token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/user/resetPassword/rethna2@gmail.com/ddd51337e985ceff36239418affba64a76894695",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"resetPassword",
+								"rethna2@gmail.com",
+								"ddd51337e985ceff36239418affba64a76894695"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "project",
+			"description": "",
+			"item": [
+				{
+					"name": "/api/project",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{baseurl}}/api/project",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"project"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YmY0ZDBlMmQ0Njk1NDJlMzMwNmQ3YTIiLCJuYW1lIjoiUmV0aG5hIEdyZWF0IiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0Mjc4MjA5MX0.hnyr-tC-_XUd0DNd1w-SU2oeZmCQNTGBep_mOF0RfPs"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3009/api/project",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"project"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/project/:projectId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MzU1MDQ0NX0.xFNtVQNxvML62h1OAwEelVuIbaAGPqK3Z9cHKuDirgI"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Project One Nov 30\",\n  \"description\":\"Desc about two\",\n  \"team\": [\"rethna2@gmail.com\"]\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/project/5bf7b6c03d10d837b0ac1f32",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"project",
+								"5bf7b6c03d10d837b0ac1f32"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/project/:projectId",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MzU1MDQ0NX0.xFNtVQNxvML62h1OAwEelVuIbaAGPqK3Z9cHKuDirgI"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/project/5bf7b6c03d10d837b0ac1f32",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"project",
+								"5bf7b6c03d10d837b0ac1f32"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/project/export/:projectId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{baseurl}}/api/project/export/5c08df061544a4465bea4dd0",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"project",
+								"export",
+								"5c08df061544a4465bea4dd0"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/project/import",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"project\": {\n        \"team\": [\n            \"ret\",\n            \"asdfasdf\"\n        ],\n        \"noOfTasks\": 2,\n        \"totalPoints\": 9,\n        \"pointsDone\": 8,\n        \"timeSpent\": 8,\n        \"_id\": \"5c08df061544a4465bea4dd0\",\n        \"name\": \"Sample Project\",\n        \"description\": \"asdfsadf \",\n        \"owner\": \"rethna2@gmail.com\",\n        \"createdAt\": \"2018-12-06T08:34:14.754Z\",\n        \"updatedAt\": \"2018-12-06T08:36:33.861Z\",\n        \"__v\": 0\n    },\n    \"tasks\": [\n        {\n            \"points\": 5,\n            \"pointsDone\": 4,\n            \"timeSpent\": 4,\n            \"status\": \"new\",\n            \"_id\": \"5c08df2c1544a4465bea4dd1\",\n            \"name\": \"task one on dec 5\",\n            \"description\": \"asdfsadf\",\n            \"assignedTo\": \"asdfasdf\",\n            \"projectId\": \"5c08df061544a4465bea4dd0\",\n            \"__v\": 0\n        },\n        {\n            \"points\": 4,\n            \"pointsDone\": 4,\n            \"timeSpent\": 4,\n            \"status\": \"new\",\n            \"_id\": \"5c08df471544a4465bea4dd3\",\n            \"name\": \"task two on dec 5\",\n            \"description\": \"sdfasfdag\",\n            \"projectId\": \"5c08df061544a4465bea4dd0\",\n            \"__v\": 0\n        }\n    ],\n    \"times\": [\n        {\n            \"task\": {\n                \"id\": \"5c08df2c1544a4465bea4dd1\",\n                \"name\": \"task one on dec 5\"\n            },\n            \"_id\": \"5c08df5e1544a4465bea4dd5\",\n            \"timeSpent\": 2,\n            \"pointsDone\": 2,\n            \"comments\": \"sfasfasdfa\",\n            \"date\": \"2018-12-05T08:35:00.000Z\",\n            \"projectId\": \"5c08df061544a4465bea4dd0\",\n            \"peopleId\": \"rethna2@gmail.com\",\n            \"createdAt\": \"2018-12-06T08:35:42.767Z\",\n            \"updatedAt\": \"2018-12-06T08:35:42.767Z\",\n            \"__v\": 0\n        },\n        {\n            \"task\": {\n                \"id\": \"5c08df471544a4465bea4dd3\",\n                \"name\": \"task two on dec 5\"\n            },\n            \"_id\": \"5c08df711544a4465bea4dd7\",\n            \"timeSpent\": 2,\n            \"pointsDone\": 2,\n            \"comments\": \"dfasdf sdfadsf\",\n            \"date\": \"2018-12-06T08:35:51.499Z\",\n            \"projectId\": \"5c08df061544a4465bea4dd0\",\n            \"peopleId\": \"rethna2@gmail.com\",\n            \"createdAt\": \"2018-12-06T08:36:01.198Z\",\n            \"updatedAt\": \"2018-12-06T08:36:01.198Z\",\n            \"__v\": 0\n        },\n        {\n            \"task\": {\n                \"id\": \"5c08df471544a4465bea4dd3\",\n                \"name\": \"task two on dec 5\"\n            },\n            \"_id\": \"5c08df811544a4465bea4dd9\",\n            \"timeSpent\": 2,\n            \"pointsDone\": 2,\n            \"comments\": \"sdfasfasdfdas\",\n            \"date\": \"2018-12-06T08:36:08.752Z\",\n            \"projectId\": \"5c08df061544a4465bea4dd0\",\n            \"peopleId\": \"rethna2@gmail.com\",\n            \"createdAt\": \"2018-12-06T08:36:17.477Z\",\n            \"updatedAt\": \"2018-12-06T08:36:17.477Z\",\n            \"__v\": 0\n        },\n        {\n            \"task\": {\n                \"id\": \"5c08df2c1544a4465bea4dd1\",\n                \"name\": \"task one on dec 5\"\n            },\n            \"_id\": \"5c08df911544a4465bea4ddb\",\n            \"timeSpent\": 2,\n            \"pointsDone\": 2,\n            \"comments\": \"sdfsadf asdfsda\",\n            \"date\": \"2018-12-06T08:36:27.726Z\",\n            \"projectId\": \"5c08df061544a4465bea4dd0\",\n            \"peopleId\": \"rethna2@gmail.com\",\n            \"createdAt\": \"2018-12-06T08:36:33.148Z\",\n            \"updatedAt\": \"2018-12-06T08:36:33.148Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/project/import",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"project",
+								"import"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "task",
+			"description": "",
+			"item": [
+				{
+					"name": "/api/task/:projectId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Task two added\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/task/5bf56d153bdba22a7bac9d21",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"task",
+								"5bf56d153bdba22a7bac9d21"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/task/:projectId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Task two added\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/task/5bf59dc95452044181ff0239",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"task",
+								"5bf59dc95452044181ff0239"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/task/:projectId/:taskId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MzU1MDQ0NX0.xFNtVQNxvML62h1OAwEelVuIbaAGPqK3Z9cHKuDirgI"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Task two added which was added on nov 29\",\n  \"points\": 5,\n  \"status\": \"backlog\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/task/5bf56d153bdba22a7bac9d21/5bf57987fe7b9430f70f099f",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"task",
+								"5bf56d153bdba22a7bac9d21",
+								"5bf57987fe7b9430f70f099f"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/task/:projectId/:taskId",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MzU1MDQ0NX0.xFNtVQNxvML62h1OAwEelVuIbaAGPqK3Z9cHKuDirgI"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/task/5bf56d153bdba22a7bac9d21/5bf57987fe7b9430f70f099f",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"task",
+								"5bf56d153bdba22a7bac9d21",
+								"5bf57987fe7b9430f70f099f"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "time",
+			"description": "",
+			"item": [
+				{
+					"name": "/api/time/:projectId/:taskId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"timeSpent\": 3,\n    \"pointsDone\": 2,\n    \"comments\": \"Dummy Task edited\",\n    \"date\": \"dec 2, 2019\",\n    \"task\": {\n      \"id\": \"taskid\",\n      \"name\": \"my task name\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/time/5bf59dc95452044181ff0239",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"time",
+								"5bf59dc95452044181ff0239"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/time/:projectId/:taskId/:timeId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"timeSpent\": 3,\n    \"pointsDone\": 2,\n    \"comments\": \"Dummy Task edited\",\n    \"date\": \"dec 2, 2019\",\n    \"task\": {\n      \"id\": \"taskid\",\n      \"name\": \"my task name\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/time/5bf56d153bdba22a7bac9d21/5bf59e375452044181ff023a",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"time",
+								"5bf56d153bdba22a7bac9d21",
+								"5bf59e375452044181ff023a"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/time/:projectId/:taskId/:timeId",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/time/5bf56d153bdba22a7bac9d21/5bf59e375452044181ff023a",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"time",
+								"5bf56d153bdba22a7bac9d21",
+								"5bf59e375452044181ff023a"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/time/task/:taskId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeSpent\": 1,\n  \"pointsDone\": 2,\n  \"comments\": \"Dummy time entry\"  \n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/time/task/5bf56d153bdba22a7bac9d21",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"time",
+								"task",
+								"5bf56d153bdba22a7bac9d21"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/time/people/:peopleId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeSpent\": 1,\n  \"pointsDone\": 2,\n  \"comments\": \"Dummy time entry\"  \n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/time/people/rethna2@gmail.com",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"time",
+								"people",
+								"rethna2@gmail.com"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/time/project/:projectId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeSpent\": 1,\n  \"pointsDone\": 2,\n  \"comments\": \"Dummy time entry\"  \n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/time/project/5bf7b6c03d10d837b0ac1f32",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"time",
+								"project",
+								"5bf7b6c03d10d837b0ac1f32"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "timesheet",
+			"description": "",
+			"item": [
+				{
+					"name": "/api/timesheet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MzU1MDQ0NX0.xFNtVQNxvML62h1OAwEelVuIbaAGPqK3Z9cHKuDirgI"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"project\": {\n    \"id\": \"5bf56d153bdba22a7bac9d21\",\n    \"name\": \"my project name\"\n  },\n    \"startDate\": \"Nov 10, 2018\",\n    \"endDate\": \"Nov 17, 2018\",\n    \"comments\": \"Not done any work for the week\",\n    \"timeSpent\": 3,\n    \"pointsDone\": 2\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/timesheet",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"timesheet"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/timesheet/:timesheetId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MzU1MDQ0NX0.xFNtVQNxvML62h1OAwEelVuIbaAGPqK3Z9cHKuDirgI"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"comments\": \"updated comments in timesheet\",\n  \"timeSpent\": 3,\n    \"pointsDone\": 2\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/timesheet/5c00de789e0a5d3e39352ab6",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"timesheet",
+								"5c00de789e0a5d3e39352ab6"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/timesheet/:timesheetId",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"timeSpent\": 3,\n    \"pointsDone\": 2,\n    \"comments\": \"Dummy Task edited\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/time/5bf59dc95452044181ff0239",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"time",
+								"5bf59dc95452044181ff0239"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "/api/timesheet/me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MzU1MDQ0NX0.xFNtVQNxvML62h1OAwEelVuIbaAGPqK3Z9cHKuDirgI"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeSpent\": 1,\n  \"pointsDone\": 2,\n  \"comments\": \"Dummy time entry\"  \n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/timesheet/me",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"timesheet",
+								"me"
+							]
+						},
+						"description": "My recent timesheets limiting to 20"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/timesheet/review",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeSpent\": 1,\n  \"pointsDone\": 2,\n  \"comments\": \"Dummy time entry\"  \n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/timesheet/review",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"timesheet",
+								"review"
+							]
+						},
+						"description": "Timesheets waiting for my action. Approval, rejection"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/timesheet/review/:timesheetId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MjgxMDQ2OH0.mJ_BB1U6CKi719dn0_PBds_tC5DYCR2D2yOEGwJcSHg"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"approved\",\n  \"comments\": \"I am the approver, and everything looks great\"  ,\n  \"timeSpent\": 3,\n    \"pointsDone\": 2\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/timesheet/review/5c01281aacab401d195c005b",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"timesheet",
+								"review",
+								"5c01281aacab401d195c005b"
+							]
+						},
+						"description": "Accept or reject. Add optional comment."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "recentactivity",
+			"description": "",
+			"item": [
+				{
+					"name": "/api/recentactivity/:projectId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MzU1MDQ0NX0.xFNtVQNxvML62h1OAwEelVuIbaAGPqK3Z9cHKuDirgI"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeSpent\": 1,\n  \"pointsDone\": 2,\n  \"comments\": \"Dummy time entry\"  \n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/recentactivity/5bf7b6c03d10d837b0ac1f32",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"recentactivity",
+								"5bf7b6c03d10d837b0ac1f32"
+							]
+						},
+						"description": "Lists the recent activities of the project."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/recentactivity/task/:taskId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MzU1MDQ0NX0.xFNtVQNxvML62h1OAwEelVuIbaAGPqK3Z9cHKuDirgI"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeSpent\": 1,\n  \"pointsDone\": 2,\n  \"comments\": \"Dummy time entry\"  \n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/recentactivity/task/5bf57987fe7b9430f70f099f",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"recentactivity",
+								"task",
+								"5bf57987fe7b9430f70f099f"
+							]
+						},
+						"description": "Lists the recent activities of the task."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/recentactivity/details/:logId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmV0aG5hIGdyZWF0IiwiZW1haWxJZCI6InJldGhuYTJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU0MzU1MDQ0NX0.xFNtVQNxvML62h1OAwEelVuIbaAGPqK3Z9cHKuDirgI"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"timeSpent\": 1,\n  \"pointsDone\": 2,\n  \"comments\": \"Dummy time entry\"  \n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/recentactivity/details/5bfffa08ab2b7a39fc386bf0",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"recentactivity",
+								"details",
+								"5bfffa08ab2b7a39fc386bf0"
+							]
+						},
+						"description": "Fetch the details of a particular log in recent activity"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
